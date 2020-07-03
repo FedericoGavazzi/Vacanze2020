@@ -6,27 +6,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="508.0" prefWidth="694.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messaggicriptati.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="315.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messaggicriptati.FXMLDocumentController">
     <children>
-        <Button fx:id="codificaBtn" layoutX="111.0" layoutY="268.0" onAction="#codifica" prefHeight="31.0" prefWidth="96.0" text="Codifica" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="487.0" />
-        <Label fx:id="label" alignment="CENTER" layoutX="150.0" layoutY="47.0" minHeight="16" minWidth="69" prefHeight="31.0" prefWidth="394.0" text="Inserisci il testo da codificare/decodificare" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
+        <Button fx:id="codificaBtn" layoutX="60.0" layoutY="165.0" onAction="#codifica" prefHeight="31.0" prefWidth="205.0" text="Codifica" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="552.0" />
+        <Label fx:id="label" alignment="CENTER" layoutX="150.0" layoutY="60.0" minHeight="16" minWidth="69" prefHeight="31.0" prefWidth="394.0" text="Inserisci il testo da codificare/decodificare" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label alignment="CENTER" prefHeight="53.0" prefWidth="694.0" text="Codifica e Decodifica di messaggi criptati" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" prefHeight="53.0" prefWidth="694.0" text="Codifica e Decodifica di messaggi criptati" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
-            <Font name="System Bold" size="26.0" />
+            <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="decodificaBtn" layoutX="496.0" layoutY="268.0" onAction="#decodifica" prefHeight="31.0" prefWidth="96.0" text="Decodifica" AnchorPane.leftAnchor="496.0" AnchorPane.rightAnchor="102.0" />
-      <Label fx:id="label1" layoutX="150.0" layoutY="308.0" minHeight="16" minWidth="69" prefHeight="22.0" prefWidth="390.0" text="label" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
-      <TextField fx:id="risultatoTxt" alignment="TOP_LEFT" editable="false" layoutX="230.0" layoutY="347.0" prefHeight="153.0" prefWidth="666.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <TextField fx:id="InserisciTxt" alignment="TOP_LEFT" layoutX="14.0" layoutY="92.0" onKeyTyped="#controlloLunghezza" prefHeight="153.0" prefWidth="677.0" promptText="Inserisci il testo..." AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-      <Label fx:id="lunghezzaMessaggioLbl" layoutX="14.0" layoutY="68.0" prefHeight="21.0" prefWidth="149.0" text="Caratteri restanti: 500">
+      <Button fx:id="decodificaBtn" layoutX="563.0" layoutY="165.0" onAction="#decodifica" prefHeight="31.0" prefWidth="205.0" text="Decodifica" AnchorPane.leftAnchor="552.0" AnchorPane.rightAnchor="60.0" />
+      <Label fx:id="label1" alignment="CENTER" layoutX="150.0" layoutY="205.0" minHeight="16" minWidth="69" prefHeight="31.0" prefWidth="394.0" text="messaggio codificato" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+      <TextField fx:id="InserisciTxt" alignment="TOP_LEFT" layoutX="14.0" layoutY="125.0" onKeyReleased="#controlloLunghezza" prefHeight="31.0" prefWidth="666.0" promptText="Inserisci il testo..." AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <TextField fx:id="risultatoTxt" alignment="TOP_LEFT" editable="false" layoutX="14.0" layoutY="244.0" prefHeight="31.0" prefWidth="666.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Label fx:id="lunghezzaMessaggioLbl" layoutX="14.0" layoutY="101.0" prefHeight="21.0" prefWidth="149.0" text="Caratteri restanti: 400">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="pulisciBtn" layoutX="299.0" layoutY="268.0" mnemonicParsing="false" onAction="#pulisci" prefHeight="31.0" prefWidth="96.0" text="Pulisci" />
+      <Button fx:id="pulisciBtn" layoutX="306.0" layoutY="165.0" mnemonicParsing="false" onAction="#pulisci" prefHeight="31.0" prefWidth="205.0" text="Pulisci" AnchorPane.leftAnchor="306.0" AnchorPane.rightAnchor="306.0" />
     </children>
 </AnchorPane>
