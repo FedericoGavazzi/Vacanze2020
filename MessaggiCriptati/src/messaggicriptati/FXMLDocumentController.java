@@ -37,10 +37,11 @@ public class FXMLDocumentController implements Initializable {
     private TextArea InserisciTxt;
     @FXML
     private Label lunghezzaMessaggioLbl;
-
-    private final int LUNGHEZZA_MASSIMA_MESSAGGIO = Criptatore.getLUNGHEZZA_MASSIMA_MESSAGGIO();
     @FXML
     private Button pulisciBtn;
+
+    private final int LUNGHEZZA_MASSIMA_MESSAGGIO = Criptatore.getLUNGHEZZA_MASSIMA_MESSAGGIO();
+    private final Button buttonRaw[] = new Button[3];
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,9 +51,12 @@ public class FXMLDocumentController implements Initializable {
         } catch (IOException ex) {
             System.out.println("Problemi con il caricamento delle chiavi");
         }
-        codificaBtn.setDisable(true);
-        decodificaBtn.setDisable(true);
-        pulisciBtn.setDisable(true);
+        buttonRaw[0] = codificaBtn;
+        buttonRaw[1] = decodificaBtn;
+        buttonRaw[2] = pulisciBtn;
+        for (Button currentButton : buttonRaw) {
+            currentButton.setDisable(true);
+        }
         label1.setText("");
     }
 
@@ -72,16 +76,14 @@ public class FXMLDocumentController implements Initializable {
             lunghezzaMessaggioLbl.setText("Caratteri restanti: " + 0);
             label1.setText("Verrano codificati/decodificati solo i primi " + LUNGHEZZA_MASSIMA_MESSAGGIO + " caratteri.");
         }
-
         if (testo.length() == 0) {
-            codificaBtn.setDisable(true);
-            decodificaBtn.setDisable(true);
-            pulisciBtn.setDisable(true);
+            for (Button currentButton : buttonRaw) {
+                currentButton.setDisable(true);
+            }
         } else {
-            codificaBtn.setDisable(false);
-            decodificaBtn.setDisable(false);
-            pulisciBtn.setDisable(false);
-
+            for (Button currentButton : buttonRaw) {
+                currentButton.setDisable(false);
+            }
         }
     }
 
@@ -101,18 +103,15 @@ public class FXMLDocumentController implements Initializable {
             lunghezzaMessaggioLbl.setText("Caratteri restanti: " + 0);
             label1.setText("Verrano codificati/decodificati solo i primi " + LUNGHEZZA_MASSIMA_MESSAGGIO + " caratteri.");
         }
-
         if (testo.length() == 0) {
-            codificaBtn.setDisable(true);
-            decodificaBtn.setDisable(true);
-            pulisciBtn.setDisable(true);
+            for (Button currentButton : buttonRaw) {
+                currentButton.setDisable(true);
+            }
         } else {
-            codificaBtn.setDisable(false);
-            decodificaBtn.setDisable(false);
-            pulisciBtn.setDisable(false);
-
+            for (Button currentButton : buttonRaw) {
+                currentButton.setDisable(false);
+            }
         }
-
     }
 
     /**
@@ -138,10 +137,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Quando premo il bottone per decodificare prendo il testo dal text Area
-     * di inserimento, lo decodifico e lo restituisco nel secondo text Area,
+     * Quando premo il bottone per decodificare prendo il testo dal text Area di
+     * inserimento, lo decodifico e lo restituisco nel secondo text Area,
      * inoltre viene aggiornata la label in cui si avvisa se il messaggio è
-     * stato codificato e se il campo di testo è vuoto.
+     * stato codificato e se l'area di testo è vuota.
      *
      * @param event
      */
@@ -166,14 +165,13 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void pulisci(ActionEvent event) {
-        risultatoTxt.clear();
         InserisciTxt.clear();
+        risultatoTxt.clear();
         label1.setText("");
-        codificaBtn.setDisable(true);
-        decodificaBtn.setDisable(true);
-        pulisciBtn.setDisable(true);
         lunghezzaMessaggioLbl.setText("Caratteri restanti: " + LUNGHEZZA_MASSIMA_MESSAGGIO);
-
+        for (Button currentButton : buttonRaw) {
+            currentButton.setDisable(true);
+        }
     }
 
 }

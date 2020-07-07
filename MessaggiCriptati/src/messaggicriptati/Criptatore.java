@@ -119,5 +119,5 @@ public class Criptatore {
     public static int getLUNGHEZZA_MASSIMA_MESSAGGIO() {
         return LUNGHEZZA_MASSIMA_MESSAGGIO;
     }
-
+     
 }
