@@ -120,8 +120,4 @@ public class Criptatore {
         return LUNGHEZZA_MASSIMA_MESSAGGIO;
     }
 
-    public static void test() {
-        System.out.println(chiave.get('A'));
-    }
-
 }

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="820.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messaggicriptati.FXMLDocumentController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="820.0" style="-fx-background-color: #130050; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="messaggicriptati.FXMLDocumentController">
     <children>
-        <Button fx:id="codificaBtn" layoutX="60.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#codifica" prefHeight="31.0" prefWidth="208.0" style="-fx-background-color: orange;" text="Codifica" AnchorPane.leftAnchor="60.0">
+        <Button fx:id="codificaBtn" layoutX="60.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#codifica" prefHeight="31.0" prefWidth="208.0" style="-fx-background-color: #ff8b00;" text="Codifica" textFill="#130050" AnchorPane.leftAnchor="60.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -20,30 +20,30 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label alignment="CENTER" prefHeight="53.0" prefWidth="694.0" text="Codifica e Decodifica di messaggi criptati" textAlignment="CENTER" textFill="#ffa300" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" prefHeight="53.0" prefWidth="694.0" text="Codifica e Decodifica di messaggi criptati" textAlignment="CENTER" textFill="#ff8b00" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="System Bold" size="39.0" />
          </font>
       </Label>
-      <Button fx:id="decodificaBtn" layoutX="552.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#decodifica" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: orange;" text="Decodifica" AnchorPane.rightAnchor="60.0">
+      <Button fx:id="decodificaBtn" layoutX="552.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#decodifica" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: #ff8b00;" text="Decodifica" textFill="#130050" AnchorPane.rightAnchor="60.0">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label fx:id="label1" alignment="CENTER" layoutX="150.0" layoutY="309.0" minHeight="16" minWidth="69" prefHeight="31.0" prefWidth="394.0" text="messaggio codificato" textFill="WHITE" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" />
+      <Label fx:id="label1" alignment="CENTER" layoutX="152.0" layoutY="324.0" minHeight="16" minWidth="69" prefHeight="31.0" prefWidth="394.0" text="messaggio codificato" textFill="WHITE" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="150.0" />
       <Label fx:id="lunghezzaMessaggioLbl" layoutX="14.0" layoutY="101.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="21.0" prefWidth="149.0" text="Caratteri restanti: " textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="pulisciBtn" layoutX="306.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#pulisci" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: #ffd800;" text="Pulisci">
+      <Button fx:id="pulisciBtn" layoutX="308.0" layoutY="278.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#pulisci" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: orange;" text="Pulisci" textFill="#130050">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TextArea fx:id="InserisciTxt" layoutX="14.0" layoutY="122.0" onKeyReleased="#controlloLunghezzaTastiera" onMouseClicked="#controlloLunghezzaMouse" prefHeight="141.0" prefWidth="789.0" promptText="Inserire il messaggio..." style="-fx-border-color: black; -fx-border-width: 2;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="122.0">
+      <TextArea fx:id="InserisciTxt" layoutX="14.0" layoutY="122.0" onKeyReleased="#controlloLunghezzaTastiera" onMouseClicked="#controlloLunghezzaMouse" prefHeight="141.0" prefWidth="789.0" promptText="Inserire il messaggio..." style="-fx-border-color: #ff8b00; -fx-border-width: 2;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="122.0">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
       </TextArea>
-      <TextArea fx:id="risultatoTxt" editable="false" layoutX="14.0" layoutY="340.0" prefHeight="153.0" prefWidth="792.0" style="-fx-border-color: black; -fx-border-width: 2;" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="340.0" />
+      <TextArea fx:id="risultatoTxt" editable="false" layoutX="16.0" layoutY="370.0" prefHeight="153.0" prefWidth="792.0" style="-fx-border-color: #ff8b00; -fx-border-width: 2;" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="370.0" />
     </children>
 </AnchorPane>
