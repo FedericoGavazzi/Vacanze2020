@@ -8,15 +8,14 @@ package messaggicriptati;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 /**
  *
@@ -33,13 +32,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button decodificaBtn;
     @FXML
-    private TextField risultatoTxt;
+    private TextArea risultatoTxt;
     @FXML
-    private TextField InserisciTxt;
+    private TextArea InserisciTxt;
     @FXML
     private Label lunghezzaMessaggioLbl;
 
-    private final int LUNGHEZZA_MASSIMA_MESSAGGIO = Criptatore.getLUNGHEZZA_MESSAGGIO();
+    private final int LUNGHEZZA_MASSIMA_MESSAGGIO = Criptatore.getLUNGHEZZA_MASSIMA_MESSAGGIO();
     @FXML
     private Button pulisciBtn;
 
@@ -53,17 +52,18 @@ public class FXMLDocumentController implements Initializable {
         }
         codificaBtn.setDisable(true);
         decodificaBtn.setDisable(true);
+        pulisciBtn.setDisable(true);
         label1.setText("");
     }
 
     /**
      * Controllo che il testo non superi la lunghezza massima ogni volta che
-     * viene premuto un tasto della tastiera
+     * viene premuto un tasto del mouse.
      *
      * @param event
      */
     @FXML
-    private void controlloLunghezza(KeyEvent event) {
+    private void controlloLunghezzaMouse(MouseEvent event) {
         String testo = InserisciTxt.getText();
         if (testo.length() <= LUNGHEZZA_MASSIMA_MESSAGGIO) {
             lunghezzaMessaggioLbl.setText("Caratteri restanti: " + (LUNGHEZZA_MASSIMA_MESSAGGIO - testo.length()));
@@ -76,17 +76,48 @@ public class FXMLDocumentController implements Initializable {
         if (testo.length() == 0) {
             codificaBtn.setDisable(true);
             decodificaBtn.setDisable(true);
+            pulisciBtn.setDisable(true);
         } else {
             codificaBtn.setDisable(false);
             decodificaBtn.setDisable(false);
-            
+            pulisciBtn.setDisable(false);
+
+        }
+    }
+
+    /**
+     * Controllo che il testo non superi la lunghezza massima ogni volta che
+     * viene premuto un tasto della tastiera.
+     *
+     * @param event
+     */
+    @FXML
+    private void controlloLunghezzaTastiera(KeyEvent event) {
+        String testo = InserisciTxt.getText();
+        if (testo.length() <= LUNGHEZZA_MASSIMA_MESSAGGIO) {
+            lunghezzaMessaggioLbl.setText("Caratteri restanti: " + (LUNGHEZZA_MASSIMA_MESSAGGIO - testo.length()));
+        } else {
+            InserisciTxt.setDisable(true);
+            lunghezzaMessaggioLbl.setText("Caratteri restanti: " + 0);
+            label1.setText("Verrano codificati/decodificati solo i primi " + LUNGHEZZA_MASSIMA_MESSAGGIO + " caratteri.");
+        }
+
+        if (testo.length() == 0) {
+            codificaBtn.setDisable(true);
+            decodificaBtn.setDisable(true);
+            pulisciBtn.setDisable(true);
+        } else {
+            codificaBtn.setDisable(false);
+            decodificaBtn.setDisable(false);
+            pulisciBtn.setDisable(false);
+
         }
 
     }
 
     /**
-     * Quando premo il bottone per codificare prendo il testo dal text field di
-     * inserimento, lo codifico e lo restituisco nel secondo text field, inoltre
+     * Quando premo il bottone per codificare prendo il testo dal text Area di
+     * inserimento, lo codifico e lo restituisco nel secondo text Area, inoltre
      * viene aggiornata la label in cui si avvisa se il messaggio è stato
      * codificato e se il campo di testo è vuoto.
      *
@@ -96,9 +127,9 @@ public class FXMLDocumentController implements Initializable {
     private void codifica(ActionEvent event) {
         if (InserisciTxt.getText().equals("")) {
             label1.setText("Messaggio vuoto");
-        } else if(InserisciTxt.getText().length() > LUNGHEZZA_MASSIMA_MESSAGGIO){
-            
-            risultatoTxt.setText(Criptatore.cripta(InserisciTxt.getText().substring(0, LUNGHEZZA_MASSIMA_MESSAGGIO-1)));
+        } else if (InserisciTxt.getText().length() > LUNGHEZZA_MASSIMA_MESSAGGIO) {
+
+            risultatoTxt.setText(Criptatore.cripta(InserisciTxt.getText().substring(0, LUNGHEZZA_MASSIMA_MESSAGGIO - 1)));
             label1.setText("Messaggio codificato");
         } else {
             risultatoTxt.setText(Criptatore.cripta(InserisciTxt.getText()));
@@ -107,8 +138,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Quando premo il bottone per decodificare prendo il testo dal text field
-     * di inserimento, lo decodifico e lo restituisco nel secondo text field,
+     * Quando premo il bottone per decodificare prendo il testo dal text Area
+     * di inserimento, lo decodifico e lo restituisco nel secondo text Area,
      * inoltre viene aggiornata la label in cui si avvisa se il messaggio è
      * stato codificato e se il campo di testo è vuoto.
      *
@@ -118,9 +149,9 @@ public class FXMLDocumentController implements Initializable {
     private void decodifica(ActionEvent event) {
         if (InserisciTxt.getText().equals("")) {
             label1.setText("Messaggio vuoto");
-        }else if(InserisciTxt.getText().length() > LUNGHEZZA_MASSIMA_MESSAGGIO){
+        } else if (InserisciTxt.getText().length() > LUNGHEZZA_MASSIMA_MESSAGGIO) {
             lunghezzaMessaggioLbl.setText("Caratteri restanti: " + 0);
-            risultatoTxt.setText(Criptatore.decripta(InserisciTxt.getText().substring(0, LUNGHEZZA_MASSIMA_MESSAGGIO-1)));
+            risultatoTxt.setText(Criptatore.decripta(InserisciTxt.getText().substring(0, LUNGHEZZA_MASSIMA_MESSAGGIO - 1)));
             label1.setText("Messaggio decodificato");
         } else {
             risultatoTxt.setText(Criptatore.decripta(InserisciTxt.getText()));
@@ -129,8 +160,8 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Pulisco la label e i text field.
-     * Disabilito i pulsanti.
+     * Pulisco la label e i text Area. Disabilito i pulsanti.
+     *
      * @param event
      */
     @FXML
@@ -140,6 +171,9 @@ public class FXMLDocumentController implements Initializable {
         label1.setText("");
         codificaBtn.setDisable(true);
         decodificaBtn.setDisable(true);
+        pulisciBtn.setDisable(true);
+        lunghezzaMessaggioLbl.setText("Caratteri restanti: " + LUNGHEZZA_MASSIMA_MESSAGGIO);
+
     }
 
 }

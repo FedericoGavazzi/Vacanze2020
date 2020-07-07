@@ -13,7 +13,9 @@ import java.util.HashMap;
 
 /**
  *
- * @author feder
+ * @author Federico Gavazzi Classe in cui vengono caricate le chiavi di codifica
+ * e decodifica, codificati e decodificati i messaggi e impostata la lunghezza
+ * massima del messaggio.
  */
 public class Criptatore {
 
@@ -25,7 +27,7 @@ public class Criptatore {
      * chiave di decodificazione
      */
     private static HashMap<Character, Character> chiaveInversa = new HashMap<>();
-    private static final int LUNGHEZZA_MESSAGGIO = 1000;
+    private static final int LUNGHEZZA_MASSIMA_MESSAGGIO = 1000;
 
     /**
      * Recupero tutti i caratteri presenti mel messaggio da codificare, ricreo
@@ -36,7 +38,7 @@ public class Criptatore {
      */
     public static String cripta(String messaggio) {
         String messaggioCriptato = "";
-        char caratteri[] = new char[LUNGHEZZA_MESSAGGIO];
+        char caratteri[] = new char[LUNGHEZZA_MASSIMA_MESSAGGIO];
         for (int i = 0; i < messaggio.length(); i++) {
             caratteri[i] = messaggio.charAt(i);
         }
@@ -59,7 +61,7 @@ public class Criptatore {
      */
     public static String decripta(String messaggio) {
         String messaggioDecriptato = "";
-        char caratteri[] = new char[LUNGHEZZA_MESSAGGIO];
+        char caratteri[] = new char[LUNGHEZZA_MASSIMA_MESSAGGIO];
         for (int i = 0; i < messaggio.length(); i++) {
             caratteri[i] = messaggio.charAt(i);
         }
@@ -67,7 +69,6 @@ public class Criptatore {
             if (chiave.get(caratteri[i]) == null) {
                 messaggioDecriptato += caratteri[i];
             } else {
-
                 messaggioDecriptato += chiaveInversa.get(caratteri[i]);
             }
         }
@@ -88,29 +89,25 @@ public class Criptatore {
             br = new BufferedReader(new FileReader("chiaveDiCodifica.txt"));
             String s;
             while ((s = br.readLine()) != null) {
-                String caratteri[];
-                caratteri = s.split(",");
+                String caratteri[] = s.split(",");
                 chiave.put(caratteri[0].charAt(0), caratteri[1].charAt(0));
             }
             //caricamento numeri e simboli e codifica da file
             br = new BufferedReader(new FileReader("altriCaratteriCodifica.txt"));
             while ((s = br.readLine()) != null) {
-                String caratteri[];
-                caratteri = s.split("a");
+                String caratteri[] = s.split("a");
                 chiave.put(caratteri[0].charAt(0), caratteri[1].charAt(0));
             }
             //caricamento alfabeto e decodifica da file
             br = new BufferedReader(new FileReader("chiaveDiDecodifica.txt"));
             while ((s = br.readLine()) != null) {
-                String caratteri[];
-                caratteri = s.split(",");
+                String caratteri[] = s.split(",");
                 chiaveInversa.put(caratteri[0].charAt(0), caratteri[1].charAt(0));
             }
             //caricamento numeri e simboli e decodifica da file
             br = new BufferedReader(new FileReader("altriCaratteriDecodifica.txt"));
             while ((s = br.readLine()) != null) {
-                String caratteri[];
-                caratteri = s.split("a");
+                String caratteri[] = s.split("a");
                 chiaveInversa.put(caratteri[0].charAt(0), caratteri[1].charAt(0));
             }
         } catch (FileNotFoundException ex) {
@@ -119,8 +116,8 @@ public class Criptatore {
 
     }
 
-    public static int getLUNGHEZZA_MESSAGGIO() {
-        return LUNGHEZZA_MESSAGGIO;
+    public static int getLUNGHEZZA_MASSIMA_MESSAGGIO() {
+        return LUNGHEZZA_MASSIMA_MESSAGGIO;
     }
 
     public static void test() {
